@@ -1,6 +1,5 @@
 import numpy as np
 
-# Cerinta 1
 def task_1(data_set):
     nr_of_columns = len(data_set.columns)
     data_types = tuple(data_set.dtypes)
