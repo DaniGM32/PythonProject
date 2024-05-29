@@ -15,10 +15,10 @@ data_set = pd.read_csv('../data/train.csv')
 
 while True:
         print("\nMeniu:")
-        print("1. Show information about the dataset coloumns")
+        print("1. Show information about the dataset columns")
         print("2. Show data about the passangers")
         print("3. Generate histograms based on the dataset")
-        print("4. Show missing values in the dataset coloumns")
+        print("4. Show missing values in the dataset columns")
         print("5. Optiunea 5")
         print("6. Optiunea 6")
         print("7. Optiunea 7")
@@ -59,14 +59,25 @@ while True:
             results_task3 = t3.task_3(data_set)
             for column in results_task3:
                 # verific daca extrag bine coloanele numerice
-                print(f'Coloana: {column}')
+                print(f'Column: {column}')
                 print(data_set[column].dropna())
-                plt.title(f'Histograma pentru pentru coloana {column}')
+                plt.title(f'Histogram for column {column}')
                 plt.figure(figsize = (14, 6))
                 plt.xlabel(column)
-                plt.ylabel('Frecventa')
+                plt.ylabel('Frequency')
                 plt.hist(data_set[column].dropna())
                 plt.show()
+        # Task 4
+        elif option == 4:
+            results_task4 = t4.task_4(data_set)
+            for column, details in results_task4.items():
+                print(f"Column: {column}\n")
+                for description, value in details.items():
+                    if "Percentage" in description:
+                        print(f"{description}: {value:.2%}")
+                    else:
+                        print(f"{description}: {value}")
+                print('-' * 100)
         # Exit option
         elif option == 0:
             break
