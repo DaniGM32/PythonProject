@@ -112,7 +112,6 @@ while True:
         # Task 10
         elif option == 10:
             results_task10 = t10.task_10(data_set.copy())
-
         # Exit option
         elif option == 0:
             break
