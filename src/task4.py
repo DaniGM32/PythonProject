@@ -15,7 +15,7 @@ def task_4(data_set):
         dead_column = dead_rows[column]
         dead_missing = dead_column.isnull().sum()
         
-        # calculez procentajele de valori care lipsesc pt fiecare categorie
+        # calculate the percentage of missing values for survivors and dead people
         survivors_percentage = survivors_missing / len(data_set[data_set['Survived'] == 1])
         dead_percentage = dead_missing / len(data_set['Survived'] == 0)
 

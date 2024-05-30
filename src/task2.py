@@ -1,8 +1,8 @@
 import numpy as np
 
 def task_2(data_set):
-    # cu groupby grupez valorile din fiecare col si cu size numar fiecare grup
-    # calculez nr de elem cu valoarea 0 si 1 in a doua coloana
+    # with groupby() you can group data by the values of a column
+    # calculating the nnumber of valous 0 and 1 in the 'Survived' column
     people = data_set.groupby(data_set.columns[1]).size()
     dead = people.get(0, 0)
     survivors = people.get(1, 0)

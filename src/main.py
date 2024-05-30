@@ -8,6 +8,7 @@ import task1 as t1
 import task2 as t2
 import task3 as t3
 import task4 as t4
+import task8 as t8
 matplotlib.use('Agg')
 plt.switch_backend('TkAgg')
 
@@ -51,21 +52,22 @@ while True:
             sizes = [p_men, p_women]
 
             fig, ax = plt.subplots()
-            ax.pie(sizes, labels = labels)
+            ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+            ax.legend(loc='upper right')
             plt.show()
         # Task 3
         elif option == 3:
             print("\n Task 3: ")
             results_task3 = t3.task_3(data_set)
             for column in results_task3:
-                # verific daca extrag bine coloanele numerice
+                # verifying if I extract the correct columns
                 print(f'Column: {column}')
                 print(data_set[column].dropna())
-                plt.title(f'Histogram for column {column}')
                 plt.figure(figsize = (14, 6))
-                plt.xlabel(column)
+                plt.title(f'Histogram for column {column}')
+                plt.xlabel('Values')
                 plt.ylabel('Frequency')
-                plt.hist(data_set[column].dropna())
+                plt.hist(data_set[column].dropna(), bins=10, edgecolor='black')
                 plt.show()
         # Task 4
         elif option == 4:
@@ -78,6 +80,13 @@ while True:
                     else:
                         print(f"{description}: {value}")
                 print('-' * 100)
+        # Task 8
+        elif option == 8:
+            # I am modifying a clone of the data-set
+            results_task8 = t8.task_8(data_set.copy())
+            results_task8.to_csv('/root/Facultate/Sem2/PCLP3/Proiect_Final_PCLP3/data/ModifiedDataSet.csv', index=False)
+            print("New dataset with filled missing values has been saved.")
+            print(results_task8.head())
         # Exit option
         elif option == 0:
             break
