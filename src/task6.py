@@ -2,15 +2,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def task_6(data_set):
-    bins = [0, 20, 40, 60, data_set['Age'].max()]
+    intervals = [0, 20, 40, 60, data_set['Age'].max()]
     labels = [1, 2, 3, 4]
 
     # creating a new column to store the age category
-    data_set['Age_Interval'] = pd.cut(data_set['Age'], bins=bins, labels=labels, right=False, include_lowest=True)
+    data_set['Age_Interval'] = pd.cut(data_set['Age'], bins=intervals, labels=labels, right=False, include_lowest=True)
     male_passengers = data_set[data_set['Sex'] == 'male']
 
-    survivors = male_passengers.groupby('Age_Interval', observed=True)['Survived'].sum()
-    total = male_passengers.groupby('Age_Interval', observed=True)['Survived'].count()
+    survivors = male_passengers.groupby('Age_Interval')['Survived'].sum()
+    total = male_passengers.groupby('Age_Interval')['Survived'].count()
     survival_data = (survivors / total) * 100
 
     survival_data = survival_data.reset_index(name='Survival_Rate')

@@ -12,6 +12,9 @@ import task5 as t5
 import task6 as t6
 import task7 as t7
 import task8 as t8
+import task9 as t9
+import task10 as t10
+
 matplotlib.use('Agg')
 plt.switch_backend('TkAgg')
 
@@ -103,6 +106,13 @@ while True:
             results_task8.to_csv('/root/Facultate/Sem2/PCLP3/Proiect_Final_PCLP3/data/ModifiedDataSet.csv', index=False)
             print("New dataset with filled missing values has been saved.")
             print(results_task8.head())
+        # Task 9
+        elif option == 9:
+            title_count = t9.task_9(data_set.copy())
+        # Task 10
+        elif option == 10:
+            results_task10 = t10.task_10(data_set.copy())
+
         # Exit option
         elif option == 0:
             break
