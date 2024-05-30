@@ -8,6 +8,7 @@ import task1 as t1
 import task2 as t2
 import task3 as t3
 import task4 as t4
+import task5 as t5
 import task8 as t8
 matplotlib.use('Agg')
 plt.switch_backend('TkAgg')
@@ -15,18 +16,18 @@ plt.switch_backend('TkAgg')
 data_set = pd.read_csv('../data/train.csv')
 
 while True:
-        print("\nMeniu:")
+        print("\nMenu:")
         print("1. Show information about the dataset columns")
         print("2. Show data about the passangers")
         print("3. Generate histograms based on the dataset")
         print("4. Show missing values in the dataset columns")
-        print("5. Optiunea 5")
+        print("5. Passengers distribution by age categories")
         print("6. Optiunea 6")
         print("7. Optiunea 7")
         print("8. Optiunea 8")
         print("9. Optiunea 9")
         print("10. Optiunea 10")
-        print("0. Iesire")
+        print("0. Exit")
 
         option = int(input("Pick an option: "))
 
@@ -63,7 +64,7 @@ while True:
                 # verifying if I extract the correct columns
                 print(f'Column: {column}')
                 print(data_set[column].dropna())
-                plt.figure(figsize = (14, 6))
+                plt.figure(figsize = (10, 6))
                 plt.title(f'Histogram for column {column}')
                 plt.xlabel('Values')
                 plt.ylabel('Frequency')
@@ -80,6 +81,16 @@ while True:
                     else:
                         print(f"{description}: {value}")
                 print('-' * 100)
+        # Task 5
+        elif option == 5:
+            age_category_counts = t5.task_5(data_set.copy())
+            plt.figure(figsize=(10, 6))
+            age_category_counts.plot(kind='bar')
+            plt.title('Distribution of Passengers by Age Categories')
+            plt.xlabel('Age Categories')
+            plt.ylabel('Number of Passengers')
+            plt.xticks(ticks=[0, 1, 2, 3], labels=['0-20', '21-40', '41-60', '61+'], rotation=0)
+            plt.show()
         # Task 8
         elif option == 8:
             # I am modifying a clone of the data-set
