@@ -9,6 +9,8 @@ import task2 as t2
 import task3 as t3
 import task4 as t4
 import task5 as t5
+import task6 as t6
+import task7 as t7
 import task8 as t8
 matplotlib.use('Agg')
 plt.switch_backend('TkAgg')
@@ -22,8 +24,8 @@ while True:
         print("3. Generate histograms based on the dataset")
         print("4. Show missing values in the dataset columns")
         print("5. Passengers distribution by age categories")
-        print("6. Optiunea 6")
-        print("7. Optiunea 7")
+        print("6. Men survival rate by age interval")
+        print("7. Percentage of children and survival rates by age group")
         print("8. Optiunea 8")
         print("9. Optiunea 9")
         print("10. Optiunea 10")
@@ -69,6 +71,7 @@ while True:
                 plt.xlabel('Values')
                 plt.ylabel('Frequency')
                 plt.hist(data_set[column].dropna(), bins=10, edgecolor='black')
+                plt.grid(axis='y', linestyle='--', alpha=0.5)
                 plt.show()
         # Task 4
         elif option == 4:
@@ -84,13 +87,15 @@ while True:
         # Task 5
         elif option == 5:
             age_category_counts = t5.task_5(data_set.copy())
-            plt.figure(figsize=(10, 6))
-            age_category_counts.plot(kind='bar')
-            plt.title('Distribution of Passengers by Age Categories')
-            plt.xlabel('Age Categories')
-            plt.ylabel('Number of Passengers')
-            plt.xticks(ticks=[0, 1, 2, 3], labels=['0-20', '21-40', '41-60', '61+'], rotation=0)
-            plt.show()
+        # Task 6
+        elif option == 6:
+            t6.task_6(data_set.copy())
+        # Task 7
+        elif option == 7:
+            percentage_children, survival_rates = t7.task_7(data_set.copy())
+            print(f"Percentage of children: {percentage_children:.2f}%")
+            print("Survival rates by age group:")
+            print(survival_rates)
         # Task 8
         elif option == 8:
             # I am modifying a clone of the data-set
