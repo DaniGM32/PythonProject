@@ -13,7 +13,7 @@ def task_5(data_set):
     age_category_counts = data_set['Age_Interval'].value_counts().sort_index()
 
     plt.figure(figsize=(10, 6))
-    age_category_counts.plot(kind='bar')
+    age_category_counts.plot(kind='bar', edgecolor='black')
     plt.title('Distribution of Passengers by Age Categories')
     plt.xlabel('Age Categories')
     plt.ylabel('Number of Passengers')
